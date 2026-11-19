@@ -1,0 +1,1390 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>光影回声_品牌官方_记录真实的每一帧影像</title>
+<meta name="description" content="光影回声是专注真实日常影像的视频品牌官网，以原创高清内容与创作者社区，持续输出有温度的品牌纪录片与生活故事。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2334322f'/%3E%3Ccircle cx='32' cy='32' r='15' fill='none' stroke='%23f2a65a' stroke-width='4'/%3E%3Cpath d='M27 24l13 8-13 8z' fill='%23f2a65a'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --ge-ink:#34322f;
+    --ge-ink-soft:#5d5852;
+    --ge-amber:#c47a2c;
+    --ge-amber-soft:#f2a65a;
+    --ge-cream:#faf5ec;
+    --ge-cream-2:#f3ead9;
+    --ge-line:#e4d8c3;
+    --ge-white:#fffdf8;
+    --ge-shadow:0 14px 34px -18px rgba(70,50,20,.45);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:"PingFang SC","Hiragino Sans GB","Microsoft YaHei",system-ui,sans-serif;
+    background:var(--ge-cream);
+    color:var(--ge-ink);
+    line-height:1.75;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit;}
+  ul{list-style:none;}
+  .ge-wrap{width:min(1180px,92vw);margin:0 auto;}
+
+  /* 吸顶公告 + 页头 */
+  .ge-sticky{position:sticky;top:0;z-index:120;}
+  .ge-notice{
+    background:var(--ge-ink);
+    color:var(--ge-cream-2);
+    font-size:13px;
+    letter-spacing:.02em;
+  }
+  .ge-notice .ge-wrap{
+    display:flex;align-items:center;gap:14px;
+    padding:9px 0;flex-wrap:wrap;
+  }
+  .ge-notice-tag{
+    background:var(--ge-amber);color:#fff;font-size:11px;
+    padding:2px 9px;border-radius:30px;letter-spacing:.08em;
+    flex:none;
+  }
+  .ge-notice ul{display:flex;gap:26px;flex-wrap:wrap;overflow:hidden;}
+  .ge-notice li{white-space:nowrap;opacity:.9;}
+  .ge-notice li b{color:var(--ge-amber-soft);font-weight:600;}
+  .ge-header{
+    background:rgba(255,253,248,.94);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--ge-line);
+  }
+  .ge-header .ge-wrap{
+    display:flex;align-items:center;gap:26px;
+    padding:14px 0;
+  }
+  .ge-logo{display:flex;align-items:center;gap:11px;flex:none;}
+  .ge-logo-mark{
+    width:42px;height:42px;border-radius:13px;
+    background:linear-gradient(140deg,#3a3733,#5c554c);
+    display:grid;place-items:center;
+  }
+  .ge-logo-mark svg{width:22px;height:22px;}
+  .ge-logo-txt strong{display:block;font-size:18px;letter-spacing:.14em;line-height:1.2;}
+  .ge-logo-txt span{font-size:10px;color:var(--ge-ink-soft);letter-spacing:.32em;}
+  .ge-nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap;}
+  .ge-nav a{
+    font-size:14px;padding:8px 13px;border-radius:9px;color:var(--ge-ink-soft);
+    transition:.22s;
+  }
+  .ge-nav a:hover{background:var(--ge-cream-2);color:var(--ge-ink);}
+  .ge-search{
+    display:flex;align-items:center;gap:8px;
+    border:1px solid var(--ge-line);border-radius:30px;
+    padding:7px 8px 7px 16px;background:var(--ge-white);
+    min-width:230px;
+  }
+  .ge-search input{
+    border:none;outline:none;background:transparent;font-size:13px;
+    width:100%;color:var(--ge-ink);
+  }
+  .ge-search button{
+    background:var(--ge-ink);color:var(--ge-cream);
+    font-size:12px;padding:6px 14px;border-radius:30px;flex:none;
+  }
+  .ge-search-msg{
+    font-size:12px;color:var(--ge-amber);margin-top:6px;min-height:18px;
+  }
+  .ge-burger{display:none;margin-left:auto;padding:8px;border-radius:9px;border:1px solid var(--ge-line);}
+  .ge-burger span{display:block;width:20px;height:2px;background:var(--ge-ink);margin:4px 0;border-radius:2px;}
+
+  /* 首屏 */
+  .ge-hero{
+    padding:64px 0 58px;
+    background:
+      radial-gradient(900px 420px at 88% -10%,rgba(242,166,90,.30),transparent 70%),
+      radial-gradient(700px 380px at 6% 110%,rgba(196,122,44,.16),transparent 68%);
+  }
+  .ge-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center;}
+  .ge-eyebrow{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:12px;letter-spacing:.22em;color:var(--ge-amber);
+    border:1px solid rgba(196,122,44,.35);border-radius:30px;
+    padding:5px 15px;margin-bottom:22px;
+  }
+  .ge-eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ge-amber);}
+  h1{
+    font-size:clamp(34px,4.4vw,56px);
+    line-height:1.16;letter-spacing:.02em;font-weight:800;
+  }
+  h1 em{font-style:normal;color:var(--ge-amber);}
+  .ge-hero-sub{
+    margin-top:20px;font-size:16px;color:var(--ge-ink-soft);max-width:34em;
+  }
+  .ge-hero-intro{
+    margin-top:18px;font-size:14.5px;color:var(--ge-ink-soft);
+    border-left:3px solid var(--ge-amber-soft);padding-left:16px;
+  }
+  .ge-stats{display:flex;gap:34px;margin-top:32px;flex-wrap:wrap;}
+  .ge-stat strong{font-size:30px;font-weight:800;letter-spacing:-.01em;color:var(--ge-ink);}
+  .ge-stat strong small{font-size:14px;color:var(--ge-amber);margin-left:3px;font-weight:600;}
+  .ge-stat span{display:block;font-size:12.5px;color:var(--ge-ink-soft);letter-spacing:.06em;}
+  .ge-hero-cta{display:flex;gap:14px;margin-top:34px;flex-wrap:wrap;}
+  .ge-btn{
+    display:inline-flex;align-items:center;gap:9px;
+    padding:13px 26px;border-radius:32px;font-size:14.5px;
+    transition:.24s;border:1px solid transparent;
+  }
+  .ge-btn-primary{background:var(--ge-ink);color:var(--ge-cream);box-shadow:var(--ge-shadow);}
+  .ge-btn-primary:hover{transform:translateY(-2px);background:#4a453f;}
+  .ge-btn-ghost{border-color:var(--ge-line);background:var(--ge-white);color:var(--ge-ink);}
+  .ge-btn-ghost:hover{border-color:var(--ge-amber);color:var(--ge-amber);}
+  .ge-hero-visual{position:relative;}
+  .ge-hero-frame{
+    border-radius:26px;overflow:hidden;box-shadow:var(--ge-shadow);
+    border:6px solid var(--ge-white);background:var(--ge-white);
+    transform:rotate(-1.2deg);
+  }
+  .ge-hero-frame img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+  .ge-hero-badge{
+    position:absolute;right:-14px;bottom:-16px;
+    background:var(--ge-amber);color:#fff;border-radius:16px;
+    padding:14px 20px;font-size:13px;line-height:1.5;box-shadow:var(--ge-shadow);
+    transform:rotate(1.5deg);
+  }
+  .ge-hero-badge b{display:block;font-size:20px;letter-spacing:.02em;}
+
+  /* 通用区块 */
+  .ge-section{padding:74px 0;}
+  .ge-section.alt{background:var(--ge-cream-2);}
+  .ge-sec-head{
+    display:flex;align-items:flex-end;justify-content:space-between;
+    gap:24px;margin-bottom:38px;flex-wrap:wrap;
+  }
+  .ge-sec-title h2{
+    font-size:clamp(24px,2.8vw,34px);font-weight:800;letter-spacing:.01em;line-height:1.3;
+  }
+  .ge-sec-title h2 i{font-style:normal;color:var(--ge-amber);}
+  .ge-sec-title p{margin-top:10px;font-size:14px;color:var(--ge-ink-soft);max-width:52em;}
+  .ge-sec-line{height:3px;width:52px;background:var(--ge-amber);border-radius:3px;margin-bottom:16px;}
+  .ge-chip-row{display:flex;gap:10px;flex-wrap:wrap;}
+  .ge-chip{
+    font-size:12.5px;padding:6px 15px;border-radius:30px;
+    border:1px solid var(--ge-line);background:var(--ge-white);color:var(--ge-ink-soft);
+    transition:.2s;
+  }
+  .ge-chip.is-active,.ge-chip:hover{background:var(--ge-ink);color:var(--ge-cream);border-color:var(--ge-ink);}
+
+  /* 深度解析长文 */
+  .ge-about-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:48px;align-items:start;}
+  .ge-about-body p{font-size:15px;color:var(--ge-ink-soft);margin-bottom:16px;}
+  .ge-about-body h3{font-size:17px;margin:26px 0 10px;letter-spacing:.01em;}
+  .ge-about-body h3::before{content:"◆";color:var(--ge-amber);font-size:11px;margin-right:9px;vertical-align:2px;}
+  .ge-about-aside{
+    background:var(--ge-white);border:1px solid var(--ge-line);border-radius:20px;
+    padding:26px;position:sticky;top:150px;
+  }
+  .ge-about-aside h3{font-size:15px;letter-spacing:.1em;color:var(--ge-amber);margin-bottom:16px;}
+  .ge-about-aside li{
+    font-size:13.5px;color:var(--ge-ink-soft);padding:11px 0;
+    border-bottom:1px dashed var(--ge-line);display:flex;justify-content:space-between;gap:12px;
+  }
+  .ge-about-aside li:last-child{border-bottom:none;}
+  .ge-about-aside li b{color:var(--ge-ink);font-weight:600;}
+
+  /* 焦点 + 视频卡 */
+  .ge-focus-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:26px;}
+  .ge-focus-main{
+    border-radius:22px;overflow:hidden;background:var(--ge-white);
+    border:1px solid var(--ge-line);box-shadow:var(--ge-shadow);
+    display:flex;flex-direction:column;transition:.28s;
+  }
+  .ge-focus-main:hover{transform:translateY(-4px);}
+  .ge-thumb{position:relative;overflow:hidden;}
+  .ge-thumb img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .5s;}
+  .ge-card:hover .ge-thumb img,.ge-focus-main:hover .ge-thumb img{transform:scale(1.05);}
+  .ge-thumb-tag{
+    position:absolute;left:12px;top:12px;font-size:11.5px;
+    background:rgba(52,50,47,.82);color:var(--ge-cream-2);
+    padding:3px 11px;border-radius:20px;letter-spacing:.06em;backdrop-filter:blur(4px);
+  }
+  .ge-thumb-play{
+    position:absolute;inset:0;display:grid;place-items:center;
+    background:linear-gradient(180deg,transparent 45%,rgba(40,34,26,.42));
+  }
+  .ge-thumb-play i{
+    width:46px;height:46px;border-radius:50%;
+    background:rgba(255,253,248,.9);display:grid;place-items:center;
+    box-shadow:0 6px 18px rgba(0,0,0,.25);
+  }
+  .ge-thumb-play i::after{
+    content:"";border-left:13px solid var(--ge-ink);
+    border-top:8px solid transparent;border-bottom:8px solid transparent;
+    margin-left:4px;
+  }
+  .ge-card-body{padding:20px 22px 22px;display:flex;flex-direction:column;gap:10px;flex:1;}
+  .ge-card-title{font-size:17px;font-weight:700;line-height:1.45;}
+  .ge-focus-main .ge-card-title{font-size:21px;}
+  .ge-card-desc{font-size:13.5px;color:var(--ge-ink-soft);}
+  .ge-card-meta{
+    display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ge-ink-soft);
+    margin-top:auto;flex-wrap:wrap;
+  }
+  .ge-avatar{
+    width:24px;height:24px;border-radius:50%;flex:none;
+    display:grid;place-items:center;font-size:11px;color:#fff;font-weight:700;
+  }
+  .ge-card-actions{display:flex;gap:8px;margin-left:auto;}
+  .ge-act{
+    font-size:12px;padding:4px 11px;border-radius:20px;
+    border:1px solid var(--ge-line);color:var(--ge-ink-soft);transition:.2s;
+    display:inline-flex;align-items:center;gap:5px;
+  }
+  .ge-act:hover{border-color:var(--ge-amber);color:var(--ge-amber);}
+  .ge-act.is-on{background:rgba(196,122,44,.12);border-color:var(--ge-amber);color:var(--ge-amber);}
+  .ge-focus-side{display:grid;gap:18px;}
+  .ge-card{
+    display:grid;grid-template-columns:130px 1fr;gap:14px;
+    background:var(--ge-white);border:1px solid var(--ge-line);
+    border-radius:16px;overflow:hidden;transition:.26s;
+  }
+  .ge-card:hover{transform:translateY(-3px);box-shadow:var(--ge-shadow);}
+  .ge-card .ge-thumb img{height:100%;aspect-ratio:auto;}
+  .ge-card .ge-thumb{min-height:96px;}
+  .ge-card .ge-card-body{padding:13px 15px 13px 0;}
+  .ge-card .ge-card-title{font-size:14px;line-height:1.42;}
+  .ge-card .ge-card-desc{display:none;}
+
+  /* 视频流瀑布 */
+  .ge-flow{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .ge-flow .ge-card{grid-template-columns:1fr;display:flex;flex-direction:column;}
+  .ge-flow .ge-card .ge-card-body{padding:16px 18px 18px;}
+  .ge-flow .ge-card .ge-thumb img{aspect-ratio:16/9;}
+
+  /* 专题 */
+  .ge-special-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .ge-special{
+    position:relative;border-radius:18px;overflow:hidden;
+    min-height:280px;display:flex;align-items:flex-end;
+    color:#fff;isolation:isolate;
+  }
+  .ge-special img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;}
+  .ge-special::after{
+    content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(30,24,16,.05) 20%,rgba(28,22,14,.86));
+  }
+  .ge-special-body{padding:20px;width:100%;}
+  .ge-special-body span{
+    font-size:11px;letter-spacing:.14em;background:rgba(242,166,90,.9);
+    color:#3a2a12;padding:3px 10px;border-radius:20px;font-weight:700;
+  }
+  .ge-special-body h3{font-size:16.5px;margin:11px 0 7px;line-height:1.4;}
+  .ge-special-body p{font-size:12.5px;opacity:.85;line-height:1.6;}
+
+  /* 创作者 */
+  .ge-maker-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .ge-maker{
+    background:var(--ge-white);border:1px solid var(--ge-line);border-radius:20px;
+    padding:24px;transition:.26s;display:flex;gap:16px;
+  }
+  .ge-maker:hover{transform:translateY(-4px);box-shadow:var(--ge-shadow);border-color:rgba(196,122,44,.4);}
+  .ge-maker-avatar{
+    width:56px;height:56px;border-radius:18px;flex:none;
+    display:grid;place-items:center;font-size:20px;font-weight:800;color:#fff;
+  }
+  .ge-maker-info h3{font-size:15.5px;}
+  .ge-maker-info .ge-maker-field{font-size:12px;color:var(--ge-amber);letter-spacing:.06em;margin:3px 0 7px;}
+  .ge-maker-info p{font-size:12.5px;color:var(--ge-ink-soft);line-height:1.6;}
+  .ge-maker-nums{display:flex;gap:14px;margin-top:9px;font-size:11.5px;color:var(--ge-ink-soft);}
+  .ge-maker-nums b{color:var(--ge-ink);}
+  .ge-maker-more{
+    margin-top:12px;display:flex;gap:8px;font-size:11.5px;
+  }
+  .ge-maker-more button{
+    border:1px solid var(--ge-line);border-radius:20px;padding:3px 11px;color:var(--ge-ink-soft);
+  }
+  .ge-maker-more button:hover{border-color:var(--ge-amber);color:var(--ge-amber);}
+
+  /* 作品墙 */
+  .ge-wall{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .ge-wall figure{
+    position:relative;border-radius:16px;overflow:hidden;background:var(--ge-white);
+    border:1px solid var(--ge-line);
+  }
+  .ge-wall figure.big{grid-column:span 2;grid-row:span 2;}
+  .ge-wall img{width:100%;height:100%;object-fit:cover;transition:transform .5s;}
+  .ge-wall figure:hover img{transform:scale(1.06);}
+  .ge-wall figure.big img{aspect-ratio:1/1;}
+  .ge-wall figure:not(.big) img{aspect-ratio:4/3;}
+  .ge-wall figcaption{
+    position:absolute;left:0;right:0;bottom:0;padding:26px 14px 12px;
+    font-size:12.5px;color:#fff;
+    background:linear-gradient(180deg,transparent,rgba(30,24,16,.8));
+  }
+
+  /* 用户评价 */
+  .ge-voice{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .ge-voice-item{
+    background:var(--ge-white);border:1px solid var(--ge-line);border-radius:18px;
+    padding:22px;display:flex;flex-direction:column;gap:12px;
+  }
+  .ge-voice-item:nth-child(2){background:var(--ge-ink);color:var(--ge-cream-2);border-color:var(--ge-ink);}
+  .ge-voice-item:nth-child(2) p{color:rgba(250,245,236,.82);}
+  .ge-voice-item:nth-child(2) .ge-voice-user span{color:rgba(250,245,236,.6);}
+  .ge-voice-item:nth-child(5){background:linear-gradient(150deg,#f6e7d0,#faf5ec);}
+  .ge-voice-item p{font-size:13.5px;color:var(--ge-ink-soft);line-height:1.72;flex:1;}
+  .ge-voice-user{display:flex;align-items:center;gap:10px;}
+  .ge-voice-user strong{font-size:13px;display:block;line-height:1.3;}
+  .ge-voice-user span{font-size:11.5px;color:var(--ge-ink-soft);}
+
+  /* FAQ */
+  .ge-faq{display:grid;gap:12px;max-width:900px;margin:0 auto;}
+  .ge-faq details{
+    background:var(--ge-white);border:1px solid var(--ge-line);border-radius:14px;
+    padding:16px 22px;transition:.2s;
+  }
+  .ge-faq details[open]{border-color:var(--ge-amber);box-shadow:var(--ge-shadow);}
+  .ge-faq summary{
+    cursor:pointer;font-size:14.5px;font-weight:600;list-style:none;
+    display:flex;justify-content:space-between;align-items:center;gap:14px;
+  }
+  .ge-faq summary::-webkit-details-marker{display:none;}
+  .ge-faq summary::after{
+    content:"+";font-size:20px;color:var(--ge-amber);font-weight:400;flex:none;line-height:1;
+  }
+  .ge-faq details[open] summary::after{content:"–";}
+  .ge-faq p{font-size:13.5px;color:var(--ge-ink-soft);margin-top:12px;padding-top:12px;border-top:1px dashed var(--ge-line);}
+
+  /* 动态 */
+  .ge-news-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .ge-news{
+    border-left:3px solid var(--ge-amber-soft);padding:4px 0 4px 18px;
+    transition:.24s;
+  }
+  .ge-news:hover{transform:translateX(4px);}
+  .ge-news time{font-size:11.5px;color:var(--ge-amber);letter-spacing:.08em;}
+  .ge-news h3{font-size:14.5px;margin:7px 0 6px;line-height:1.45;}
+  .ge-news p{font-size:12.5px;color:var(--ge-ink-soft);line-height:1.65;}
+
+  /* 联系 */
+  .ge-contact{
+    background:var(--ge-ink);color:var(--ge-cream-2);border-radius:28px;
+    padding:56px;display:grid;grid-template-columns:1.1fr .9fr;gap:44px;
+  }
+  .ge-contact h2{font-size:clamp(24px,3vw,34px);line-height:1.3;margin-bottom:16px;}
+  .ge-contact h2 i{font-style:normal;color:var(--ge-amber-soft);}
+  .ge-contact p{font-size:14px;color:rgba(250,245,236,.75);margin-bottom:12px;}
+  .ge-contact-info li{font-size:13.5px;padding:10px 0;border-bottom:1px solid rgba(250,245,236,.14);display:flex;gap:14px;}
+  .ge-contact-info li b{color:var(--ge-amber-soft);width:76px;flex:none;font-weight:600;}
+  .ge-contact-form{display:grid;gap:12px;}
+  .ge-contact-form input,.ge-contact-form textarea{
+    background:rgba(250,245,236,.07);border:1px solid rgba(250,245,236,.2);
+    border-radius:11px;padding:12px 16px;color:var(--ge-cream);font-size:13.5px;
+    outline:none;font-family:inherit;resize:vertical;
+  }
+  .ge-contact-form input:focus,.ge-contact-form textarea:focus{border-color:var(--ge-amber-soft);}
+  .ge-contact-form input::placeholder,.ge-contact-form textarea::placeholder{color:rgba(250,245,236,.4);}
+  .ge-contact-form button{
+    background:var(--ge-amber-soft);color:#3a2a12;border-radius:30px;
+    padding:13px;font-size:14px;font-weight:700;transition:.22s;
+  }
+  .ge-contact-form button:hover{background:#ffbc7d;}
+
+  /* 页脚 */
+  .ge-footer{background:#2b2825;color:rgba(250,245,236,.72);padding:56px 0 26px;font-size:13px;}
+  .ge-footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:36px;margin-bottom:40px;}
+  .ge-footer h4{color:var(--ge-cream);font-size:14px;margin-bottom:15px;letter-spacing:.06em;}
+  .ge-footer li{padding:5px 0;transition:.2s;}
+  .ge-footer li a:hover{color:var(--ge-amber-soft);}
+  .ge-footer-brand p{line-height:1.8;max-width:30em;}
+  .ge-footer-bottom{
+    border-top:1px solid rgba(250,245,236,.14);padding-top:22px;
+    display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;font-size:12px;
+    color:rgba(250,245,236,.5);
+  }
+  .ge-backtop{
+    position:fixed;right:24px;bottom:26px;z-index:90;
+    width:46px;height:46px;border-radius:50%;background:var(--ge-ink);
+    color:var(--ge-cream);display:grid;place-items:center;font-size:18px;
+    box-shadow:var(--ge-shadow);opacity:0;pointer-events:none;transition:.3s;
+  }
+  .ge-backtop.is-show{opacity:1;pointer-events:auto;}
+  .ge-backtop:hover{background:var(--ge-amber);}
+
+  /* 弹窗 & Toast */
+  .ge-modal{
+    position:fixed;inset:0;z-index:200;background:rgba(35,30,24,.55);
+    display:none;place-items:center;padding:20px;backdrop-filter:blur(3px);
+  }
+  .ge-modal.is-open{display:grid;}
+  .ge-modal-box{
+    background:var(--ge-white);border-radius:22px;max-width:480px;width:100%;
+    padding:30px;box-shadow:0 30px 70px -25px rgba(0,0,0,.5);max-height:86vh;overflow:auto;
+  }
+  .ge-modal-box h3{font-size:19px;margin-bottom:14px;}
+  .ge-modal-box p{font-size:13.5px;color:var(--ge-ink-soft);margin-bottom:16px;}
+  .ge-modal-box .ge-modal-actions{display:flex;gap:10px;margin-top:20px;}
+  .ge-modal-box textarea,.ge-modal-box input{
+    width:100%;border:1px solid var(--ge-line);border-radius:10px;
+    padding:11px 14px;font-size:13.5px;font-family:inherit;outline:none;margin-bottom:10px;
+  }
+  .ge-modal-box textarea:focus,.ge-modal-box input:focus{border-color:var(--ge-amber);}
+  .ge-modal-close{float:right;font-size:20px;color:var(--ge-ink-soft);line-height:1;}
+  .ge-toast{
+    position:fixed;left:50%;bottom:34px;transform:translate(-50%,20px);
+    background:var(--ge-ink);color:var(--ge-cream);font-size:13.5px;
+    padding:11px 24px;border-radius:30px;z-index:300;opacity:0;
+    pointer-events:none;transition:.3s;box-shadow:var(--ge-shadow);
+  }
+  .ge-toast.is-show{opacity:1;transform:translate(-50%,0);}
+
+  /* 响应式 */
+  @media(max-width:1024px){
+    .ge-hero-grid,.ge-about-grid,.ge-focus-grid,.ge-contact{grid-template-columns:1fr;}
+    .ge-flow,.ge-maker-grid,.ge-voice{grid-template-columns:repeat(2,1fr);}
+    .ge-special-grid,.ge-news-grid{grid-template-columns:repeat(2,1fr);}
+    .ge-about-aside{position:static;}
+    .ge-contact{padding:36px;}
+  }
+  @media(max-width:760px){
+    .ge-nav{
+      display:none;position:absolute;left:0;right:0;top:100%;
+      background:var(--ge-white);border-bottom:1px solid var(--ge-line);
+      padding:12px;gap:4px;box-shadow:var(--ge-shadow);
+    }
+    .ge-nav.is-open{display:flex;flex-direction:column;}
+    .ge-nav a{padding:11px 14px;}
+    .ge-burger{display:block;}
+    .ge-search{order:5;width:100%;min-width:0;}
+    .ge-header .ge-wrap{flex-wrap:wrap;position:relative;gap:12px;}
+    .ge-flow,.ge-maker-grid,.ge-voice,.ge-special-grid,.ge-news-grid,.ge-wall{grid-template-columns:1fr;}
+    .ge-wall figure.big{grid-column:span 1;grid-row:span 1;}
+    .ge-footer-top{grid-template-columns:1fr 1fr;}
+    .ge-section{padding:52px 0;}
+    .ge-hero{padding:44px 0 42px;}
+    .ge-focus-side .ge-card{grid-template-columns:110px 1fr;}
+    .ge-contact{padding:28px 22px;}
+    .ge-notice ul{gap:16px;}
+  }
+</style>
+<script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</head>
+<body>
+
+<div class="ge-sticky">
+  <div class="ge-notice">
+    <div class="ge-wrap">
+      <span class="ge-notice-tag">官方发布</span>
+      <ul>
+        <li><b>11月18日</b>「真实的力量」年度影像专题正式上线</li>
+        <li><b>11月15日</b> 2026 冬季创作者招募启动报名</li>
+        <li><b>11月12日</b> 高清正版片库新增 38 部原创短片</li>
+      </ul>
+    </div>
+  </div>
+  <header class="ge-header">
+    <div class="ge-wrap">
+      <a class="ge-logo" href="#ge-home">
+        <span class="ge-logo-mark">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="32" r="17" fill="none" stroke="#f2a65a" stroke-width="4"/><path d="M26 23l16 9-16 9z" fill="#f2a65a"/></svg>
+        </span>
+        <span class="ge-logo-txt"><strong>光影回声</strong><span>LIGHT ECHO</span></span>
+      </a>
+      <nav class="ge-nav" id="geNav">
+        <a href="#ge-home">首页</a>
+        <a href="#ge-focus">焦点内容</a>
+        <a href="#ge-special">专题企划</a>
+        <a href="#ge-makers">创作者</a>
+        <a href="#ge-wall">影像墙</a>
+        <a href="#ge-news">品牌动态</a>
+        <a href="#ge-faq">帮助</a>
+        <a href="#ge-contact">联系</a>
+      </nav>
+      <div class="ge-search">
+        <input type="text" id="geSearchInput" placeholder="搜索影像、创作者或专题" aria-label="站内搜索">
+        <button type="button" id="geSearchBtn">搜索</button>
+      </div>
+      <button class="ge-burger" id="geBurger" aria-label="展开导航" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+</div>
+
+<div class="ge-search-msg ge-wrap" id="geSearchMsg" role="status" aria-live="polite"></div>
+
+<main>
+
+  <!-- 首屏 -->
+  <section class="ge-hero" id="ge-home">
+    <div class="ge-wrap ge-hero-grid">
+      <div>
+        <span class="ge-eyebrow">品牌官方网站 · 持续运营中</span>
+        <h1>光影回声 <em>真实的每一帧</em></h1>
+        <p class="ge-hero-sub">一个深耕真实日常影像的视频品牌与内容社区，把生活里那些难以复述的瞬间，用镜头留在时间里。</p>
+        <p class="ge-hero-intro">光影回声官方网站由影像团队与独立创作者共同运营。我们相信，最动人的影像从不过度修饰，它只是恰好被看见。这里收录企业出品的原创纪录片、城市影像档案，以及来自社区创作者的真实记录。每一部作品都经过选题打磨、现场拍摄与后期调色，坚持正版与高清交付，为品牌客户与普通观众提供同等品质的观看体验。</p>
+        <div class="ge-stats">
+          <div class="ge-stat"><strong>1,286<small>部</small></strong><span>原创正版影像</span></div>
+          <div class="ge-stat"><strong>4.7<small>亿</small></strong><span>累计内容播放</span></div>
+          <div class="ge-stat"><strong>2,640<small>位</small></strong><span>签约与入驻创作者</span></div>
+        </div>
+        <div class="ge-hero-cta">
+          <a class="ge-btn ge-btn-primary" href="#ge-focus">进入焦点内容 →</a>
+          <a class="ge-btn ge-btn-ghost" href="#ge-makers">认识创作者</a>
+        </div>
+      </div>
+      <div class="ge-hero-visual">
+        <div class="ge-hero-frame">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Cdefs%3E%3ClinearGradient id='sky' x1='0' y1='0' x2='0' y2='1'%3E%3Cstop offset='0' stop-color='%23f6c98a'/%3E%3Cstop offset='.55' stop-color='%23e79a52'/%3E%3Cstop offset='1' stop-color='%23a85f2c'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='450' fill='url(%23sky)'/%3E%3Ccircle cx='600' cy='150' r='66' fill='%23fff3d8' opacity='.92'/%3E%3Cpath d='M0 330 L150 250 L290 320 L430 236 L560 316 L700 250 L800 306 L800 450 L0 450 Z' fill='%23714a2b'/%3E%3Cpath d='M0 380 L180 322 L360 384 L540 326 L720 386 L800 350 L800 450 L0 450 Z' fill='%23493220'/%3E%3Crect x='0' y='405' width='800' height='45' fill='%23f2a65a' opacity='.28'/%3E%3Cg fill='%23fff8ea' opacity='.55'%3E%3Ccircle cx='120' cy='90' r='3'/%3E%3Ccircle cx='200' cy='60' r='2.4'/%3E%3Ccircle cx='700' cy='80' r='2.8'/%3E%3Ccircle cx='420' cy='70' r='2'/%3E%3C/g%3E%3Cpath d='M350 120 h48 v34 h-48z' fill='%23fff' opacity='.14'/%3E%3C/svg%3E" alt="光影回声品牌主视觉：黄昏山谷与暖橙天空的纪实画面">
+        </div>
+        <div class="ge-hero-badge">
+          <b>2026 年度企划</b>
+          真实的力量 · 已开启
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 深度解析 -->
+  <section class="ge-section alt" id="ge-about">
+    <div class="ge-wrap">
+      <div class="ge-sec-head">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line"></div>
+          <h2>关于光影回声：<i>一个把「真实」当作方法论的视频品牌</i></h2>
+          <p>从一间三十平米的剪辑室起步，到今天的创作者内容生态，我们想认真讲讲这个品牌为什么值得被信赖。</p>
+        </div>
+      </div>
+      <div class="ge-about-grid">
+        <div class="ge-about-body">
+          <p>光影回声成立于 2016 年，是一家以真实影像为核心的视频内容企业。最初团队只有五个人：两位导演、一位摄影师、一位剪辑师，还有一位负责把硬盘到处背的制片。我们接的第一支片子，是为一家开了二十年的旧书店拍十分钟的品牌故事，预算不高，却花了整整六周做前期采访。片子发布后，书店老板在评论区写下了一句话——「原来我这些年做的事情，是有人看见的。」那句话后来被我们贴在了办公室墙上，也成了这个品牌最早的内容标准。</p>
+          <p>十年过去，光影回声已经从一个承接商业拍摄的小团队，成长为拥有完整制作链路与创作者社区的视频内容平台。我们自建了选题委员会、影像实验室与正版素材库，为每一部企业出品的内容提供从田野调研、脚本打磨、现场执行到调色调音的全流程支持。与此同时，平台向独立创作者开放，让更多在生活中举着相机的人，可以把他们的观察放进一个有秩序、有品质、有回应的内容生态里。</p>
+          <h3>我们为什么坚持「不加滤镜」</h3>
+          <p>在这个所有人都在追加快节奏的时代，光影回声选择了一个相对笨拙的方向：用更长的拍摄周期，换取更真实的情绪。我们的摄影师会在一个菜市场待上三天，只为等一段自然的清晨叫卖；我们的剪辑师会为一个 40 秒的转场反复推敲两小时，只为让观众不感到被技巧打扰。我们认为，视频品牌的价值不在于制造多少视觉冲击，而在于是否诚实——诚实地记录，也诚实地交代每一部作品的来处。</p>
+          <p>这种坚持带来了具体的结果。平台目前累计上线 1,286 部原创正版影像，覆盖城市探索、手作技艺、家庭日常、户外记录、职场故事、知识科普等十余个垂直领域。我们的企业动态与内容更新保持每周更新，专题企划每季度推出一期，持续运营的社区让创作者与观众之间形成稳定的陪伴关系，而不是一次性的观看消耗。用户口碑也由此沉淀：超过七成的回访用户表示，他们来这里是为了「安静地看完一支片子」。</p>
+          <h3>内容生态、社区与创作者</h3>
+          <p>我们把自己定位成一个创作者友好型的视频品牌官网，而不仅是一个播放页面。入驻创作者会获得选题建议、拍摄设备支持、后期协作与正版音乐授权等实际帮助；优秀作品会被纳入官方精品内容推荐位，参与季度专题与线下放映。我们希望形成一种良性循环：企业以专业能力托底品质，创作者以真实视角提供活力，观众以反馈与分享构成口碑，最终让整个内容生态保持健康的呼吸。</p>
+          <p>光影回声的使命，是让真实被记录、被看见、被珍惜。我们的愿景，是成为华语世界里最值得信赖的真实影像品牌之一。我们的价值观只有三条：用户至上、匠心制作、持续创新。它们不写在墙上，而是写在每一次开机前的沟通、每一版被推翻的剪辑稿、以及每一条被认真回复的用户留言里。这也是我们对「官方网站」这四个字的理解——它不只是一个入口，更是一份长期的承诺。</p>
+        </div>
+        <aside class="ge-about-aside">
+          <h3>品牌速览</h3>
+          <ul>
+            <li><span>品牌成立</span><b>2016 年</b></li>
+            <li><span>团队规模</span><b>86 人</b></li>
+            <li><span>原创片库</span><b>1,286 部</b></li>
+            <li><span>入驻创作者</span><b>2,640 位</b></li>
+            <li><span>垂直内容方向</span><b>12 个</b></li>
+            <li><span>季度专题企划</span><b>已出 34 期</b></li>
+            <li><span>官方更新频率</span><b>每周三次</b></li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- 焦点内容 -->
+  <section class="ge-section" id="ge-focus">
+    <div class="ge-wrap">
+      <div class="ge-sec-head">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line"></div>
+          <h2>焦点内容：<i>本周值得安静看完的影像</i></h2>
+          <p>由编辑团队与创作者共同推荐，覆盖深度纪录、人物访谈与生活观察，均为原创正版内容。</p>
+        </div>
+        <div class="ge-chip-row" id="geFocusChips">
+          <button class="ge-chip is-active" data-filter="all">全部</button>
+          <button class="ge-chip" data-filter="doc">纪录</button>
+          <button class="ge-chip" data-filter="city">城市</button>
+          <button class="ge-chip" data-filter="life">生活</button>
+        </div>
+      </div>
+
+      <div class="ge-focus-grid" id="geFocusGrid">
+        <article class="ge-focus-main ge-card" data-cat="doc">
+          <div class="ge-thumb">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 450'%3E%3Crect width='800' height='450' fill='%23dcd2c2'/%3E%3Crect y='290' width='800' height='160' fill='%23b9a98f'/%3E%3Cg fill='%23705e46'%3E%3Crect x='120' y='180' width='150' height='110' rx='4'/%3E%3Crect x='300' y='140' width='190' height='150' rx='4'/%3E%3Crect x='520' y='196' width='160' height='94' rx='4'/%3E%3C/g%3E%3Cg fill='%23f4ecd9'%3E%3Crect x='140' y='205' width='26' height='26'/%3E%3Crect x='186' y='205' width='26' height='26'/%3E%3Crect x='322' y='168' width='30' height='30'/%3E%3Crect x='374' y='168' width='30' height='30'/%3E%3Crect x='426' y='168' width='30' height='30'/%3E%3Crect x='540' y='218' width='24' height='24'/%3E%3C/g%3E%3Ccircle cx='660' cy='90' r='42' fill='%23f2a65a' opacity='.85'/%3E%3Cpath d='M0 380 h800 v70 H0z' fill='%23594832'/%3E%3C/svg%3E" alt="纪录片《老街第七年》封面：午后老街与斑驳窗格">
+            <span class="ge-thumb-tag">纪录 · 焦点</span>
+            <div class="ge-thumb-play"><i></i></div>
+          </div>
+          <div class="ge-card-body">
+            <h3 class="ge-card-title">老街第七年：一间裁缝铺和一整条街的耐心</h3>
+            <p class="ge-card-desc">我们用七个月的断续跟拍，记录下一条老街在改造前后的呼吸变化。主角是做了三十四年裁缝的陈师傅，他记得每一个老邻居的肩宽与脾气。片子没有旁白，只有缝纫机、卷尺和傍晚市声，却意外成了平台年度口碑最高的一部纪录短片。</p>
+            <div class="ge-card-meta">
+              <span class="ge-avatar" style="background:#c47a2c">陈</span>
+              <span>陈记影像</span>
+              <span>· 24.6万 次播放</span>
+              <span class="ge-card-actions">
+                <button class="ge-act ge-like" data-count="3682">赞 <b>3682</b></button>
+                <button class="ge-act ge-fav">收藏</button>
+                <button class="ge-act ge-share">分享</button>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <div class="ge-focus-side">
+          <article class="ge-card" data-cat="city">
+            <div class="ge-thumb">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%236d8aa0'/%3E%3Crect y='210' width='400' height='90' fill='%23445c70'/%3E%3Cg fill='%23c7d6e0' opacity='.85'%3E%3Crect x='40' y='120' width='52' height='90'/%3E%3Crect x='112' y='86' width='44' height='124'/%3E%3Crect x='180' y='140' width='58' height='70'/%3E%3Crect x='258' y='100' width='46' height='110'/%3E%3Crect x='322' y='146' width='48' height='64'/%3E%3C/g%3E%3Ccircle cx='330' cy='52' r='26' fill='%23f2c98a' opacity='.9'/%3E%3C/svg%3E" alt="城市影像《凌晨四点的公交总站》封面：蓝灰色站台与灯光">
+              <span class="ge-thumb-tag">城市</span>
+              <div class="ge-thumb-play"><i></i></div>
+            </div>
+            <div class="ge-card-body">
+              <h3 class="ge-card-title">凌晨四点的公交总站</h3>
+              <p class="ge-card-desc">首班车之前的城市另一面。</p>
+              <div class="ge-card-meta">
+                <span class="ge-avatar" style="background:#4f7d94">林</span>
+                <span>林间拾光</span>
+                <span class="ge-card-actions">
+                  <button class="ge-act ge-like" data-count="1420">赞 <b>1420</b></button>
+                  <button class="ge-act ge-fav">收藏</button>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ge-card" data-cat="life">
+            <div class="ge-thumb">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23e8dcc4'/%3E%3Crect y='200' width='400' height='100' fill='%23c9b48e'/%3E%3Cg%3E%3Crect x='70' y='120' width='120' height='80' rx='6' fill='%238b5a34'/%3E%3Crect x='80' y='130' width='42' height='30' fill='%23f2e6cd'/%3E%3Crect x='132' y='130' width='42' height='30' fill='%23f2e6cd'/%3E%3Crect x='230' y='150' width='60' height='50' rx='4' fill='%236d8a63'/%3E%3Ccircle cx='305' cy='86' r='34' fill='%23f2a65a' opacity='.7'/%3E%3C/g%3E%3C/svg%3E" alt="生活记录《一个人也要好好吃饭》封面：木桌与暖色餐具">
+              <span class="ge-thumb-tag">生活</span>
+              <div class="ge-thumb-play"><i></i></div>
+            </div>
+            <div class="ge-card-body">
+              <h3 class="ge-card-title">一个人也要好好吃饭：三十天厨房记录</h3>
+              <p class="ge-card-desc">关于独居与一碗热汤的日常碎片。</p>
+              <div class="ge-card-meta">
+                <span class="ge-avatar" style="background:#a8714a">苏</span>
+                <span>苏禾小厨</span>
+                <span class="ge-card-actions">
+                  <button class="ge-act ge-like" data-count="2754">赞 <b>2754</b></button>
+                  <button class="ge-act ge-fav">收藏</button>
+                </span>
+              </div>
+            </div>
+          </article>
+
+          <article class="ge-card" data-cat="doc">
+            <div class="ge-thumb">
+              <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23353c3a'/%3E%3Cg stroke='%23d8c9a6' stroke-width='2' fill='none'%3E%3Ccircle cx='200' cy='150' r='70'/%3E%3Ccircle cx='200' cy='150' r='98' opacity='.5'/%3E%3Cpath d='M200 40 v220 M80 150 h240' opacity='.35'/%3E%3C/g%3E%3Ccircle cx='200' cy='150' r='26' fill='%23f2a65a'/%3E%3C/svg%3E" alt="访谈《镜头背后：一位摄影师的十年自述》封面：深色圆环与暖色核心">
+              <span class="ge-thumb-tag">访谈</span>
+              <div class="ge-thumb-play"><i></i></div>
+            </div>
+            <div class="ge-card-body">
+              <h3 class="ge-card-title">镜头背后：一位摄影师的十年自述</h3>
+              <p class="ge-card-desc">从胶片到数字，他留下了什么。</p>
+              <div class="ge-card-meta">
+                <span class="ge-avatar" style="background:#3a4644">周</span>
+                <span>周野说</span>
+                <span class="ge-card-actions">
+                  <button class="ge-act ge-like" data-count="986">赞 <b>986</b></button>
+                  <button class="ge-act ge-fav">收藏</button>
+                </span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 热门视频流 -->
+  <section class="ge-section alt" id="ge-flow">
+    <div class="ge-wrap">
+      <div class="ge-sec-head">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line"></div>
+          <h2>热门影像流：<i>社区正在记录的生活切面</i></h2>
+          <p>来自 2,640 位创作者的真实投稿，经编辑复核后进入官方推荐位。点击卡片可查看作品详情与作者档案。</p>
+        </div>
+      </div>
+      <div class="ge-flow">
+        <article class="ge-card" data-cat="life">
+          <div class="ge-thumb">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23bcd2c4'/%3E%3Cpath d='M0 160 Q100 110 200 155 T400 140 V225 H0Z' fill='%236f8f74'/%3E%3Cg fill='%23fff6e4'%3E%3Ccircle cx='90' cy='70' r='18'/%3E%3Ccircle cx='320' cy='54' r='14'/%3E%3C/g%3E%3Cpath d='M150 225 v-70 l36-26 36 26 v70z' fill='%23f0e3c8'/%3E%3C/svg%3E" alt="视频《阳台上的四季》封面：绿意阳台与浅色窗">
+            <span class="ge-thumb-tag">生活</span>
+          </div>
+          <div class="ge-card-body">
+            <h3 class="ge-card-title">阳台上的四季：三平米里的植物观察</h3>
+            <p class="ge-card-desc">一位上班族用两年时间，记录了他在出租屋阳台养活的 41 种植物。</p>
+            <div class="ge-card-meta">
+              <span class="ge-avatar" style="background:#6f8f74">叶</span><span>叶下生活</span><span>· 12.3万</span>
+              <span class="ge-card-actions">
+                <button class="ge-act ge-like" data-count="2310">赞 <b>2310</b></button>
+                <button class="ge-act ge-fav">收藏</button>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="ge-card" data-cat="doc">
+          <div class="ge-thumb">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%232e3438'/%3E%3Cg stroke='%23f2a65a' stroke-width='3' fill='none'%3E%3Cpath d='M60 180 L130 100 L200 160 L270 70 L340 150'/%3E%3C/g%3E%3Cg fill='%23f2a65a'%3E%3Ccircle cx='130' cy='100' r='6'/%3E%3Ccircle cx='270' cy='70' r='6'/%3E%3C/g%3E%3Crect x='0' y='196' width='400' height='29' fill='%231f2427'/%3E%3C/svg%3E" alt="视频《夜班》封面：深色背景与橙色折线图">
+            <span class="ge-thumb-tag">纪录</span>
+          </div>
+          <div class="ge-card-body">
+            <h3 class="ge-card-title">夜班：三个人和一座睡着的城</h3>
+            <p class="ge-card-desc">护士、便利店店员、出租车司机，在同一片夜色里各自清醒。</p>
+            <div class="ge-card-meta">
+              <span class="ge-avatar" style="background:#2e3438">夜</span><span>夜行记录</span><span>· 18.7万</span>
+              <span class="ge-card-actions">
+                <button class="ge-act ge-like" data-count="3120">赞 <b>3120</b></button>
+                <button class="ge-act ge-fav">收藏</button>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="ge-card" data-cat="city">
+          <div class="ge-thumb">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23e6d3b6'/%3E%3Cg fill='%238d5f3d'%3E%3Crect x='30' y='90' width='70' height='135'/%3E%3Crect x='120' y='60' width='56' height='165'/%3E%3Crect x='196' y='104' width='80' height='121'/%3E%3Crect x='296' y='76' width='70' height='149'/%3E%3C/g%3E%3Cg fill='%23f7efdf' opacity='.8'%3E%3Crect x='42' y='108' width='14' height='18'/%3E%3Crect x='68' y='108' width='14' height='18'/%3E%3Crect x='134' y='82' width='12' height='16'/%3E%3Crect x='212' y='124' width='16' height='20'/%3E%3Crect x='312' y='96' width='16' height='20'/%3E%3C/g%3E%3C/svg%3E" alt="视频《老巷早餐地图》封面：暖色楼群与窗格">
+            <span class="ge-thumb-tag">城市</span>
+          </div>
+          <div class="ge-card-body">
+            <h3 class="ge-card-title">老巷早餐地图：六家开了二十年的小摊</h3>
+            <p class="ge-card-desc">跟着本地人的脚步，吃一整条街的清晨。</p>
+            <div class="ge-card-meta">
+              <span class="ge-avatar" style="background:#8d5f3d">巷</span><span>巷口频道</span><span>· 9.8万</span>
+              <span class="ge-card-actions">
+                <button class="ge-act ge-like" data-count="1770">赞 <b>1770</b></button>
+                <button class="ge-act ge-fav">收藏</button>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="ge-card" data-cat="life">
+          <div class="ge-thumb">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23cfd8e2'/%3E%3Crect y='150' width='400' height='75' fill='%239aa8b8'/%3E%3Cg fill='%23ffffff' opacity='.9'%3E%3Crect x='60' y='40' width='90' height='60' rx='8'/%3E%3Crect x='190' y='66' width='120' height='44' rx='8' opacity='.7'/%3E%3C/g%3E%3Cg fill='%23485a6c'%3E%3Ccircle cx='120' cy='140' r='16'/%3E%3Ccircle cx='230' cy='150' r='12'/%3E%3C/g%3E%3C/svg%3E" alt="视频《整理一间房》封面：浅蓝灰房间与白色收纳盒">
+            <span class="ge-thumb-tag">家居</span>
+          </div>
+          <div class="ge-card-body">
+            <h3 class="ge-card-title">整理一间房，也整理一段心情</h3>
+            <p class="ge-card-desc">收纳师上门实录：从混乱到轻盈的四个小时。</p>
+            <div class="ge-card-meta">
+              <span class="ge-avatar" style="background:#5a6f86">简</span><span>简物日记</span><span>· 7.6万</span>
+              <span class="ge-card-actions">
+                <button class="ge-act ge-like" data-count="1298">赞 <b>1298</b></button>
+                <button class="ge-act ge-fav">收藏</button>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="ge-card" data-cat="doc">
+          <div class="ge-thumb">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23f0e2cd'/%3E%3Cg fill='none' stroke='%238a6a45' stroke-width='3'%3E%3Ccircle cx='130' cy='112' r='52'/%3E%3Ccircle cx='270' cy='112' r='52'/%3E%3C/g%3E%3Cpath d='M130 60 v104 M78 112 h104 M270 60 v104 M218 112 h104' stroke='%238a6a45' stroke-width='2' opacity='.5'/%3E%3Ccircle cx='200' cy='112' r='16' fill='%23c47a2c'/%3E%3C/svg%3E" alt="视频《手上功夫》封面：米色背景与手作圆形图案">
+            <span class="ge-thumb-tag">手作</span>
+          </div>
+          <div class="ge-card-body">
+            <h3 class="ge-card-title">手上功夫：一位木作师傅的一天</h3>
+            <p class="ge-card-desc">刨花卷起来的时候，时间也跟着慢了下来。</p>
+            <div class="ge-card-meta">
+              <span class="ge-avatar" style="background:#8a6a45">木</span><span>木作间</span><span>· 6.1万</span>
+              <span class="ge-card-actions">
+                <button class="ge-act ge-like" data-count="1044">赞 <b>1044</b></button>
+                <button class="ge-act ge-fav">收藏</button>
+              </span>
+            </div>
+          </div>
+        </article>
+
+        <article class="ge-card" data-cat="city">
+          <div class="ge-thumb">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%2394a9bd'/%3E%3Cpath d='M0 160 L80 120 L160 156 L240 110 L320 150 L400 118 V225 H0Z' fill='%23536b84'/%3E%3Cpath d='M0 186 L90 158 L190 188 L280 148 L400 180 V225 H0Z' fill='%233c5064'/%3E%3Ccircle cx='330' cy='52' r='24' fill='%23f4e7cf' opacity='.9'/%3E%3C/svg%3E" alt="视频《沿着河走》封面：蓝灰河岸与远山">
+            <span class="ge-thumb-tag">户外</span>
+          </div>
+          <div class="ge-card-body">
+            <h3 class="ge-card-title">沿着河走：一条水系的六小时徒步</h3>
+            <p class="ge-card-desc">从上游走到入河口，把沿途的声音都录下来。</p>
+            <div class="ge-card-meta">
+              <span class="ge-avatar" style="background:#536b84">河</span><span>河边散步</span><span>· 5.4万</span>
+              <span class="ge-card-actions">
+                <button class="ge-act ge-like" data-count="892">赞 <b>892</b></button>
+                <button class="ge-act ge-fav">收藏</button>
+              </span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 专题企划 -->
+  <section class="ge-section" id="ge-special">
+    <div class="ge-wrap">
+      <div class="ge-sec-head">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line"></div>
+          <h2>专题企划：<i>品牌每季度交出的答卷</i></h2>
+          <p>围绕一个具体主题，由编辑团队统筹选题、创作者联合拍摄，形成可持续的专题内容序列。</p>
+        </div>
+      </div>
+      <div class="ge-special-grid">
+        <article class="ge-special">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23a8562f'/%3E%3Ccircle cx='150' cy='150' r='80' fill='%23f2c08a' opacity='.9'/%3E%3Cpath d='M0 300 Q150 240 300 306 V400 H0Z' fill='%23663420'/%3E%3C/svg%3E" alt="专题《真实的力量》封面：暖橙圆形与深色地面">
+          <div class="ge-special-body">
+            <span>更新中 · 12 支</span>
+            <h3>真实的力量</h3>
+            <p>记录那些没有被镜头修饰的瞬间，年度重点专题。</p>
+          </div>
+        </article>
+        <article class="ge-special">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%233f5a63'/%3E%3Cg stroke='%23a9cbd2' stroke-width='2' fill='none' opacity='.7'%3E%3Cpath d='M0 120 H300 M0 200 H300 M0 280 H300'/%3E%3Cpath d='M100 0 V400 M200 0 V400'/%3E%3C/g%3E%3Ccircle cx='150' cy='210' r='40' fill='%23f2a65a'/%3E%3C/svg%3E" alt="专题《城市夜行》封面：深蓝网格与橙色圆点">
+          <div class="ge-special-body">
+            <span>已完结 · 9 支</span>
+            <h3>城市夜行</h3>
+            <p>在凌晨的城市里，寻找仍然亮着灯的地方。</p>
+          </div>
+        </article>
+        <article class="ge-special">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%23e3d6be'/%3E%3Cg fill='%23a98a5e'%3E%3Crect x='40' y='220' width='60' height='150'/%3E%3Crect x='130' y='180' width='44' height='190'/%3E%3Crect x='200' y='240' width='64' height='130'/%3E%3C/g%3E%3Ccircle cx='150' cy='110' r='50' fill='%23c47a2c' opacity='.75'/%3E%3C/svg%3E" alt="专题《手作慢叙》封面：米色背景与手作建筑剪影">
+          <div class="ge-special-body">
+            <span>更新中 · 7 支</span>
+            <h3>手作慢叙</h3>
+            <p>和时间做朋友的人，他们的手艺与耐心。</p>
+          </div>
+        </article>
+        <article class="ge-special">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 400'%3E%3Crect width='300' height='400' fill='%236b7d5c'/%3E%3Cpath d='M0 300 L80 220 L150 280 L230 190 L300 260 V400 H0Z' fill='%2344543a'/%3E%3Cg fill='%23eaf0dd' opacity='.8'%3E%3Ccircle cx='90' cy='90' r='4'/%3E%3Ccircle cx='160' cy='60' r='3'/%3E%3Ccircle cx='230' cy='110' r='4'/%3E%3C/g%3E%3C/svg%3E" alt="专题《向外走》封面：自然绿山脊与浅色光点">
+          <div class="ge-special-body">
+            <span>预告 · 报名中</span>
+            <h3>向外走</h3>
+            <p>户外与自然影像征集，期待你的山路与风。</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 创作者矩阵 -->
+  <section class="ge-section alt" id="ge-makers">
+    <div class="ge-wrap">
+      <div class="ge-sec-head">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line"></div>
+          <h2>创作者矩阵：<i>让专业的人，讲真实的事</i></h2>
+          <p>平台为创作者提供选题支持、设备协作与正版授权，帮助他们把观察打磨成作品。</p>
+        </div>
+      </div>
+      <div class="ge-maker-grid">
+        <article class="ge-maker">
+          <div class="ge-maker-avatar" style="background:linear-gradient(140deg,#c47a2c,#e8b478)">陈</div>
+          <div class="ge-maker-info">
+            <h3>陈记影像</h3>
+            <div class="ge-maker-field">纪录 · 城市记忆</div>
+            <p>纪录片导演，擅长用长镜头等待情绪自然发生。代表作《老街第七年》。</p>
+            <div class="ge-maker-nums"><span><b>86</b> 部作品</span><span><b>42.1万</b> 关注</span></div>
+            <div class="ge-maker-more">
+              <button class="ge-maker-info-btn" data-maker="陈记影像">作者档案</button>
+              <button class="ge-follow">关注</button>
+            </div>
+          </div>
+        </article>
+        <article class="ge-maker">
+          <div class="ge-maker-avatar" style="background:linear-gradient(140deg,#4f7d94,#8fb6c7)">林</div>
+          <div class="ge-maker-info">
+            <h3>林间拾光</h3>
+            <div class="ge-maker-field">城市 · 摄影随笔</div>
+            <p>自由摄影师，专拍清晨与深夜里的城市空隙，作品色调冷静克制。</p>
+            <div class="ge-maker-nums"><span><b>54</b> 部作品</span><span><b>28.6万</b> 关注</span></div>
+            <div class="ge-maker-more">
+              <button class="ge-maker-info-btn" data-maker="林间拾光">作者档案</button>
+              <button class="ge-follow">关注</button>
+            </div>
+          </div>
+        </article>
+        <article class="ge-maker">
+          <div class="ge-maker-avatar" style="background:linear-gradient(140deg,#a8714a,#d9a677)">苏</div>
+          <div class="ge-maker-info">
+            <h3>苏禾小厨</h3>
+            <div class="ge-maker-field">生活 · 厨房日常</div>
+            <p>把一个人的饭桌拍成连续的日记，强调真实的厨房声音与烟火气。</p>
+            <div class="ge-maker-nums"><span><b>132</b> 部作品</span><span><b>51.3万</b> 关注</span></div>
+            <div class="ge-maker-more">
+              <button class="ge-maker-info-btn" data-maker="苏禾小厨">作者档案</button>
+              <button class="ge-follow">关注</button>
+            </div>
+          </div>
+        </article>
+        <article class="ge-maker">
+          <div class="ge-maker-avatar" style="background:linear-gradient(140deg,#6f8f74,#a8c3a2)">叶</div>
+          <div class="ge-maker-info">
+            <h3>叶下生活</h3>
+            <div class="ge-maker-field">植物 · 日常观察</div>
+            <p>植物爱好者，用小体量空间做长期影像实验，偏爱自然光与手写笔记。</p>
+            <div class="ge-maker-nums"><span><b>67</b> 部作品</span><span><b>19.8万</b> 关注</span></div>
+            <div class="ge-maker-more">
+              <button class="ge-maker-info-btn" data-maker="叶下生活">作者档案</button>
+              <button class="ge-follow">关注</button>
+            </div>
+          </div>
+        </article>
+        <article class="ge-maker">
+          <div class="ge-maker-avatar" style="background:linear-gradient(140deg,#6b7d5c,#a4b787)">木</div>
+          <div class="ge-maker-info">
+            <h3>木作间</h3>
+            <div class="ge-maker-field">手作 · 技艺记录</div>
+            <p>手工艺记录者，长期跟踪木作、陶艺、织造等传统技艺的当代表达。</p>
+            <div class="ge-maker-nums"><span><b>39</b> 部作品</span><span><b>14.2万</b> 关注</span></div>
+            <div class="ge-maker-more">
+              <button class="ge-maker-info-btn" data-maker="木作间">作者档案</button>
+              <button class="ge-follow">关注</button>
+            </div>
+          </div>
+        </article>
+        <article class="ge-maker">
+          <div class="ge-maker-avatar" style="background:linear-gradient(140deg,#3a4644,#7e8f8b)">周</div>
+          <div class="ge-maker-info">
+            <h3>周野说</h3>
+            <div class="ge-maker-field">访谈 · 影像思考</div>
+            <p>前媒体人，专注创作者访谈与行业观察，问题总是问得很慢、很准。</p>
+            <div class="ge-maker-nums"><span><b>48</b> 部作品</span><span><b>22.7万</b> 关注</span></div>
+            <div class="ge-maker-more">
+              <button class="ge-maker-info-btn" data-maker="周野说">作者档案</button>
+              <button class="ge-follow">关注</button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- 影像墙 -->
+  <section class="ge-section" id="ge-wall">
+    <div class="ge-wrap">
+      <div class="ge-sec-head">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line"></div>
+          <h2>影像墙：<i>社区镜头里的另一种秩序</i></h2>
+          <p>每周从投稿中选出的静帧作品，尺寸与内容各不相同，共同构成这个品牌的观看方式。</p>
+        </div>
+      </div>
+      <div class="ge-wall">
+        <figure class="big">
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 400'%3E%3Crect width='400' height='400' fill='%23c9a26f'/%3E%3Ccircle cx='300' cy='100' r='60' fill='%23f7e4c2' opacity='.9'/%3E%3Cpath d='M0 260 L120 190 L230 264 L330 200 L400 250 V400 H0Z' fill='%23784a29'/%3E%3Cpath d='M0 310 L140 266 L270 320 L400 270 V400 H0Z' fill='%23502f1a'/%3E%3C/svg%3E" alt="影像墙作品《午后山谷》：暖橙光影与深色山脊">
+          <figcaption>午后山谷 · 陈记影像</figcaption>
+        </figure>
+        <figure>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23cfdbe4'/%3E%3Cpath d='M0 220 H400 V300 H0Z' fill='%237f95a8'/%3E%3Cg fill='%23ffffff' opacity='.85'%3E%3Crect x='48' y='60' width='80' height='50' rx='6'/%3E%3Crect x='180' y='92' width='110' height='36' rx='6'/%3E%3C/g%3E%3C/svg%3E" alt="影像墙作品《窗外》：浅蓝窗外与白色云块">
+          <figcaption>窗外 · 林间拾光</figcaption>
+        </figure>
+        <figure>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23e7dcc4'/%3E%3Ccircle cx='120' cy='130' r='58' fill='%23a8714a' opacity='.85'/%3E%3Crect x='220' y='90' width='100' height='140' rx='8' fill='%236f8f74' opacity='.8'/%3E%3C/svg%3E" alt="影像墙作品《桌面》：米色背景与陶土圆形">
+          <figcaption>桌面 · 苏禾小厨</figcaption>
+        </figure>
+        <figure>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%233b4247'/%3E%3Cg stroke='%23f2a65a' stroke-width='2' fill='none'%3E%3Ccircle cx='200' cy='150' r='60'/%3E%3Ccircle cx='200' cy='150' r='88' opacity='.5'/%3E%3C/g%3E%3C/svg%3E" alt="影像墙作品《夜环》：深色背景与橙色同心圆">
+          <figcaption>夜环 · 周野说</figcaption>
+        </figure>
+        <figure>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23dfe7d6'/%3E%3Cg fill='%236b7d5c'%3E%3Cpath d='M100 240 q40-120 80 0z'/%3E%3Cpath d='M200 240 q50-150 100 0z'/%3E%3C/g%3E%3Ccircle cx='90' cy='80' r='22' fill='%23f2c98a'/%3E%3C/svg%3E" alt="影像墙作品《绿意》：自然绿叶片与浅色光点">
+          <figcaption>绿意 · 叶下生活</figcaption>
+        </figure>
+        <figure>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23b9a58a'/%3E%3Cg stroke='%235a4630' stroke-width='6' fill='none'%3E%3Cpath d='M80 250 V120 q40-50 80 0 V250'/%3E%3Cpath d='M240 250 V90 q50-40 80 0 V250'/%3E%3C/g%3E%3C/svg%3E" alt="影像墙作品《木构》：大地色背景与木作框架">
+          <figcaption>木构 · 木作间</figcaption>
+        </figure>
+        <figure>
+          <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%23e8c9a0'/%3E%3Cpath d='M0 200 Q100 150 200 196 T400 180 V300 H0Z' fill='%23b36f34'/%3E%3Ccircle cx='320' cy='80' r='30' fill='%23fdf1d8'/%3E%3C/svg%3E" alt="影像墙作品《晚归》：暖橙沙丘与浅色落日">
+          <figcaption>晚归 · 巷口频道</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- 用户评价 -->
+  <section class="ge-section alt" id="ge-voice">
+    <div class="ge-wrap">
+      <div class="ge-sec-head">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line"></div>
+          <h2>用户评价：<i>来自社区的真实回声</i></h2>
+          <p>我们保留每一条真诚的反馈，因为它们构成了这个品牌最直接的口碑。</p>
+        </div>
+      </div>
+      <div class="ge-voice">
+        <div class="ge-voice-item">
+          <p>「在这里看片子有一种奇怪的安心感。没有夸张的标题，没有吵闹的背景音乐，就是安安静静把一件事讲完。我通常会留到片尾字幕结束。」</p>
+          <div class="ge-voice-user"><span class="ge-avatar" style="background:#c47a2c">顾</span><div><strong>顾时一</strong><span>观看 3 年</span></div></div>
+        </div>
+        <div class="ge-voice-item">
+          <p>「投稿流程比我预想的顺畅。编辑会认真回复选题，提出具体的修改建议，而不是一句『不符合要求』。对我来说，这种被认真对待的感觉很难得。」</p>
+          <div class="ge-voice-user"><span class="ge-avatar" style="background:#f2a65a">夏</span><div><strong>夏末频道</strong><span>入驻创作者</span></div></div>
+        </div>
+        <div class="ge-voice-item">
+          <p>「画质确实是很稳定的高清，正版授权也写得清楚。我们做企业内训时会直接引用平台上的案例片，省掉了很多沟通成本。」</p>
+          <div class="ge-voice-user"><span class="ge-avatar" style="background:#4f7d94">何</span><div><strong>何女士</strong><span>企业用户</span></div></div>
+        </div>
+        <div class="ge-voice-item">
+          <p>「《老街第七年》我看了三遍。第三遍才注意到背景里的收音，原来那些市声全是同期录的。这种细节让我愿意相信这个平台。」</p>
+          <div class="ge-voice-user"><span class="ge-avatar" style="background:#6f8f74">罗</span><div><strong>罗屿</strong><span>纪录片爱好者</span></div></div>
+        </div>
+        <div class="ge-voice-item">
+          <p>「专题企划的完成度很高，不是简单拼几条视频，而是真的围绕一个主题做了系统性的内容组织。希望之后能多出一些手作方向的专题。」</p>
+          <div class="ge-voice-user"><span class="ge-avatar" style="background:#8a6a45">程</span><div><strong>程小满</strong><span>手作爱好者</span></div></div>
+        </div>
+        <div class="ge-voice-item">
+          <p>「社区氛围比较克制，评论区很少有人吵架，更多是在讨论拍摄手法和选题。这一点挺难得的。」</p>
+          <div class="ge-voice-user"><span class="ge-avatar" style="background:#5a6f86">沈</span><div><strong>沈默然</strong><span>观看 2 年</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 品牌动态 -->
+  <section class="ge-section" id="ge-news">
+    <div class="ge-wrap">
+      <div class="ge-sec-head">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line"></div>
+          <h2>品牌动态：<i>官方发布与内容更新</i></h2>
+          <p>关于这个视频品牌正在发生的事，包括企划进度、创作者招募与内容生态的阶段性变化。</p>
+        </div>
+      </div>
+      <div class="ge-news-grid">
+        <article class="ge-news">
+          <time datetime="2026-11-18">2026.11.18</time>
+          <h3>「真实的力量」专题正式上线</h3>
+          <p>首批 12 支纪录短片同步发布，覆盖城市、乡村、手艺与家庭四个方向，专题页已开放。</p>
+        </article>
+        <article class="ge-news">
+          <time datetime="2026-11-15">2026.11.15</time>
+          <h3>冬季创作者招募启动报名</h3>
+          <p>面向所有生活影像创作者开放，入选者将获得拍摄协作、后期支持与官方推荐位。</p>
+        </article>
+        <article class="ge-news">
+          <time datetime="2026-11-12">2026.11.12</time>
+          <h3>高清正版片库新增 38 部原创短片</h3>
+          <p>本次更新以手作与城市日常为主，全部完成调色与声音母带处理，支持高清播放。</p>
+        </article>
+        <article class="ge-news">
+          <time datetime="2026-11-06">2026.11.06</time>
+          <h3>平台内容规范完成年度修订</h3>
+          <p>新版规范进一步明确原创署名、素材授权与社区讨论边界，已在帮助中心公示。</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="ge-section alt" id="ge-faq">
+    <div class="ge-wrap">
+      <div class="ge-sec-head" style="justify-content:center;text-align:center;">
+        <div class="ge-sec-title">
+          <div class="ge-sec-line" style="margin:0 auto 16px;"></div>
+          <h2>常见问题：<i>你想知道的，都在这里</i></h2>
+        </div>
+      </div>
+      <div class="ge-faq">
+        <details open>
+          <summary>光影回声是什么类型的视频品牌？</summary>
+          <p>光影回声是一家以真实影像为核心的视频内容企业与社区，官方网站提供原创纪录、人物访谈、生活影像与专题企划等内容，同时向独立创作者开放投稿与入驻。</p>
+        </details>
+        <details>
+          <summary>如何向平台投稿自己的作品？</summary>
+          <p>可以在页面底部联系区填写投稿信息，或通过官方公布的投稿入口提交作品链接与创作说明。编辑团队会在五个工作日内给予反馈，通过后会协助完成素材补充与上线排期。</p>
+        </details>
+        <details>
+          <summary>平台上的内容都是原创正版吗？</summary>
+          <p>是。企业出品的所有内容均由自有团队或签约创作者完成，使用的音乐与素材均取得正版授权。社区投稿需在提交时确认原创归属，平台会进行复核。</p>
+        </details>
+        <details>
+          <summary>是否支持创作者获得收益与曝光？</summary>
+          <p>平台设有内容激励与专题推荐机制，优质作品会进入官方推荐位、季度专题与线下放映活动。具体收益规则可在帮助中心查看最新说明。</p>
+        </details>
+        <details>
+          <summary>可以申请品牌合作或商业拍摄吗？</summary>
+          <p>可以。我们长期为品牌客户提供纪录片、品牌故事与专题短片的全流程制作服务，欢迎通过联系区预约沟通，团队会提供方案与预算建议。</p>
+        </details>
+        <details>
+          <summary>观看内容需要安装额外软件吗？</summary>
+          <p>不需要。官方网站所有内容均可在浏览器中直接浏览，推荐使用较新版本的浏览器以获得更稳定的高清播放体验。</p>
+        </details>
+        <details>
+          <summary>平台如何处理版权与侵权反馈？</summary>
+          <p>我们设有专门的版权反馈通道，收到有效反馈后会进行核实并依法处理。平台始终坚持正版与原创，尊重每一位创作者的劳动成果。</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系 -->
+  <section class="ge-section" id="ge-contact">
+    <div class="ge-wrap">
+      <div class="ge-contact">
+        <div>
+          <h2>和我们聊聊，<br><i>关于影像的任何可能</i></h2>
+          <p>无论你是想合作一支品牌纪录片、投稿自己的作品，还是只是想告诉我们某部片子打动了你，我们都愿意认真读完每一条信息。</p>
+          <ul class="ge-contact-info">
+            <li><b>合作邮箱</b><span>brand@lightecho.example</span></li>
+            <li><b>投稿通道</b><span>creator@lightecho.example</span></li>
+            <li><b>办公地址</b><span>城市影像中心 3 层 · 光影回声</span></li>
+            <li><b>工作时间</b><span>周一至周五 10:00 – 19:00</span></li>
+          </ul>
+        </div>
+        <form class="ge-contact-form" id="geContactForm">
+          <input type="text" placeholder="你的称呼" required>
+          <input type="email" placeholder="联系邮箱" required>
+          <textarea rows="4" placeholder="简单说说你的想法，比如合作方向或投稿内容"></textarea>
+          <button type="submit">提交信息</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="ge-footer">
+  <div class="ge-wrap">
+    <div class="ge-footer-top">
+      <div class="ge-footer-brand">
+        <h4>光影回声 LIGHT ECHO</h4>
+        <p>以真实影像为核心的企业视频品牌，官方网站持续更新原创纪录、专题企划与社区内容。我们相信真实的力量，也相信长期主义的价值。</p>
+      </div>
+      <div>
+        <h4>内容</h4>
+        <ul>
+          <li><a href="#ge-focus">焦点内容</a></li>
+          <li><a href="#ge-flow">热门影像流</a></li>
+          <li><a href="#ge-special">专题企划</a></li>
+          <li><a href="#ge-wall">影像墙</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>品牌</h4>
+        <ul>
+          <li><a href="#ge-about">品牌故事</a></li>
+          <li><a href="#ge-news">企业动态</a></li>
+          <li><a href="#ge-makers">创作者矩阵</a></li>
+          <li><a href="#ge-faq">帮助中心</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>参与</h4>
+        <ul>
+          <li><a href="#ge-contact">合作联系</a></li>
+          <li><a href="#ge-contact">作品投稿</a></li>
+          <li><a href="#ge-news">创作者招募</a></li>
+          <li><a href="#ge-contact">版权反馈</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="ge-footer-bottom">
+      <span>© 2016–2026 光影回声 官方网站 | 保留所有权利 | 持续运营中</span>
+      <span>原创内容 · 正版授权 · 高清品质 · 用户至上</span>
+    </div>
+  </div>
+</footer>
+
+<button class="ge-backtop" id="geBackTop" aria-label="回到顶部">↑</button>
+
+<div class="ge-modal" id="geModal" role="dialog" aria-modal="true" aria-labelledby="geModalTitle">
+  <div class="ge-modal-box">
+    <button class="ge-modal-close" id="geModalClose" aria-label="关闭">×</button>
+    <h3 id="geModalTitle">提示</h3>
+    <div id="geModalBody"></div>
+    <div class="ge-modal-actions" id="geModalActions"></div>
+  </div>
+</div>
+
+<div class="ge-toast" id="geToast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+  "use strict";
+
+  var $ = function(s,ctx){return (ctx||document).querySelector(s);};
+  var $$ = function(s,ctx){return Array.prototype.slice.call((ctx||document).querySelectorAll(s));};
+
+  /* Toast */
+  var toastEl = $("#geToast");
+  var toastTimer = null;
+  function toast(msg){
+    toastEl.textContent = msg;
+    toastEl.classList.add("is-show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toastEl.classList.remove("is-show"); }, 2200);
+  }
+
+  /* 移动端导航折叠 */
+  var burger = $("#geBurger");
+  var nav = $("#geNav");
+  burger.addEventListener("click", function(){
+    var open = nav.classList.toggle("is-open");
+    burger.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  $$("#geNav a").forEach(function(a){
+    a.addEventListener("click", function(){
+      nav.classList.remove("is-open");
+      burger.setAttribute("aria-expanded","false");
+    });
+  });
+
+  /* 搜索反馈 */
+  var searchInput = $("#geSearchInput");
+  var searchBtn = $("#geSearchBtn");
+  var searchMsg = $("#geSearchMsg");
+  var searchTimer = null;
+  function doSearch(){
+    var kw = searchInput.value.trim();
+    if(!kw){
+      searchMsg.textContent = "请输入关键词，例如「老街」「手作」「城市」";
+      return;
+    }
+    searchMsg.textContent = "已为「" + kw + "」匹配到 6 个内容方向与 3 位相关创作者，正在为你整理结果…";
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function(){
+      searchMsg.textContent = "「" + kw + "」相关结果：焦点内容 2 条 · 热门影像 4 条 · 创作者 3 位 · 专题 1 期。";
+    }, 1100);
+  }
+  searchBtn.addEventListener("click", doSearch);
+  searchInput.addEventListener("keydown", function(e){
+    if(e.key === "Enter"){ e.preventDefault(); doSearch(); }
+  });
+
+  /* 点赞 +1/-1 */
+  $$(".ge-like").forEach(function(btn){
+    var base = parseInt(btn.getAttribute("data-count") || "0", 10);
+    var on = false;
+    btn.addEventListener("click", function(){
+      on = !on;
+      var num = base + (on ? 1 : 0);
+      btn.classList.toggle("is-on", on);
+      btn.innerHTML = (on ? "已赞" : "赞") + " <b>" + num + "</b>";
+    });
+  });
+
+  /* 收藏切换 */
+  $$(".ge-fav").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var on = btn.classList.toggle("is-on");
+      btn.textContent = on ? "已收藏" : "收藏";
+      toast(on ? "已收藏到我的片单" : "已从片单移除");
+    });
+  });
+
+  /* 分享 */
+  function shareText(title){
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(title + " · 光影回声官方网站").then(function(){
+        toast("内容链接已复制，可分享给朋友");
+      }).catch(function(){
+        toast("分享内容：《" + title + "》");
+      });
+    } else {
+      toast("分享内容：《" + title + "》");
+    }
+  }
+  $$(".ge-share").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var card = btn.closest(".ge-card");
+      var title = card ? $(".ge-card-title", card).textContent : "光影回声影像内容";
+      shareText(title);
+    });
+  });
+
+  /* 焦点分类筛选 */
+  var chips = $$("#geFocusChips .ge-chip");
+  var focusItems = $$("#geFocusGrid [data-cat]");
+  chips.forEach(function(chip){
+    chip.addEventListener("click", function(){
+      chips.forEach(function(c){ c.classList.remove("is-active"); });
+      chip.classList.add("is-active");
+      var f = chip.getAttribute("data-filter");
+      focusItems.forEach(function(item){
+        var show = (f === "all" || item.getAttribute("data-cat") === f);
+        item.style.display = show ? "" : "none";
+      });
+    });
+  });
+
+  /* 通用弹窗 */
+  var modal = $("#geModal");
+  var modalTitle = $("#geModalTitle");
+  var modalBody = $("#geModalBody");
+  var modalActions = $("#geModalActions");
+  function openModal(title, html, actions){
+    modalTitle.textContent = title;
+    modalBody.innerHTML = html;
+    modalActions.innerHTML = "";
+    (actions || []).forEach(function(a){
+      var b = document.createElement("button");
+      b.className = "ge-btn " + (a.primary ? "ge-btn-primary" : "ge-btn-ghost");
+      b.textContent = a.label;
+      b.addEventListener("click", function(){
+        if(a.handler){ a.handler(); }
+        closeModal();
+      });
+      modalActions.appendChild(b);
+    });
+    modal.classList.add("is-open");
+  }
+  function closeModal(){ modal.classList.remove("is-open"); }
+  $("#geModalClose").addEventListener("click", closeModal);
+  modal.addEventListener("click", function(e){ if(e.target === modal){ closeModal(); } });
+  document.addEventListener("keydown", function(e){ if(e.key === "Escape"){ closeModal(); } });
+
+  /* 作者档案弹窗 */
+  $$(".ge-maker-info-btn").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var name = btn.getAttribute("data-maker");
+      openModal(name + " · 创作者档案",
+        "<p>这是光影回声官方认证的入驻创作者。其作品经过编辑复核，内容方向稳定，持续参与平台专题与社区活动。</p>" +
+        "<p style='font-size:13px;color:#5d5852'>擅长领域与代表作品可在影像墙与焦点内容中查看。平台为其提供选题建议、拍摄协作与正版素材授权支持。</p>",
+        [{label:"关注创作者", primary:true, handler:function(){ toast("已关注 " + name); }},
+         {label:"关闭"}]);
+    });
+  });
+
+  /* 关注创作者 */
+  $$(".ge-follow").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var on = btn.textContent === "关注";
+      btn.textContent = on ? "已关注" : "关注";
+      btn.style.color = on ? "#c47a2c" : "";
+      toast(on ? "关注成功，后续作品会出现在你的首页" : "已取消关注");
+    });
+  });
+
+  /* 点击卡片查看详情 */
+  $$(".ge-flow .ge-card, .ge-focus-side .ge-card").forEach(function(card){
+    card.addEventListener("click", function(e){
+      if(e.target.closest("button")){ return; }
+      var title = $(".ge-card-title", card).textContent;
+      var desc = $(".ge-card-desc", card).textContent;
+      openModal(title,
+        "<p>" + desc + "</p><p style='font-size:13px;color:#5d5852'>本作品为光影回声原创正版内容，支持高清播放。你可以在焦点内容与影像墙中找到相关专题与作者档案。</p>",
+        [{label:shareLabel(), primary:true, handler:function(){ shareText(title); }},
+         {label:"知道了"}]);
+    });
+  });
+  function shareLabel(){ return "复制链接分享"; }
+
+  /* 联系表单 */
+  var contactForm = $("#geContactForm");
+  contactForm.addEventListener("submit", function(e){
+    e.preventDefault();
+    var inputs = $$("input", contactForm);
+    var name = inputs[0].value.trim();
+    var mail = inputs[1].value.trim();
+    if(!name || !mail){
+      toast("请填写称呼与联系邮箱");
+      return;
+    }
+    toast("信息已收到，我们会在两个工作日内回复你");
+    contactForm.reset();
+  });
+
+  /* 回到顶部 */
+  var backTop = $("#geBackTop");
+  window.addEventListener("scroll", function(){
+    if(window.scrollY > 520){ backTop.classList.add("is-show"); }
+    else { backTop.classList.remove("is-show"); }
+  }, {passive:true});
+  backTop.addEventListener("click", function(){
+    window.scrollTo({top:0, behavior:"smooth"});
+  });
+
+})();
+</script>
+</body>
+  </html>
